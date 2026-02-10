@@ -7,8 +7,8 @@ import { connectDB } from "./lib/db.js";
 import cors from "cors"
 import {inngest,functions} from "./lib/inngest.js"
 import {serve} from "inngest/express"
-// import { protectRoute } from "./middleware/protectRoute.js";
 import chatRoutes from "./routes/chatRoutes.js";
+import sessionRoute from "./routes/sessionRoute.js"
 const app = express ( ) ;
 console.log(
   "INNGEST_SIGNING_KEY:",
@@ -35,6 +35,7 @@ app.get("/health", (req, res) => {
 res.json("sapi is up and runing" );
 })
 app.use("/api/chat", chatRoutes)
+app.use("/api/session", sessionRoute)
 
 
 
